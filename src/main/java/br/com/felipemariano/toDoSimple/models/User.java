@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -14,7 +13,7 @@ import java.util.Objects;
 public class User {
     public interface CreateUser { }
     public interface UpdateUser { }
-    public static final String TABLE_NAME = "user";
+    public static final String TABLE_NAME = "users";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
