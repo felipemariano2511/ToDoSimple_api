@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ToDoSimpleApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(ToDoSimpleApplication.class, args);
 	}
 
