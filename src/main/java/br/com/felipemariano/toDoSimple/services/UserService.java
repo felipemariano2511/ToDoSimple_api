@@ -15,9 +15,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private TaskRepository taskRepository;
-
     public User findById(Long id) {
         Optional<User> user = this.userRepository.findById(id);
         return user.orElseThrow(() -> new RuntimeException("Usuário não encontrado! Id: " + id + ". Tipo: " + User.class.getName()));
@@ -27,7 +24,6 @@ public class UserService {
     public User create(User obj) {
         obj.setId(null);
         obj = this.userRepository.save(obj);
-        this.taskRepository.saveAll(obj.getTasks());
 
         return obj;
     }
