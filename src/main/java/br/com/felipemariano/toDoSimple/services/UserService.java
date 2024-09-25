@@ -3,6 +3,8 @@ package br.com.felipemariano.toDoSimple.services;
 import br.com.felipemariano.toDoSimple.models.User;
 import br.com.felipemariano.toDoSimple.repositories.TaskRepository;
 import br.com.felipemariano.toDoSimple.repositories.UserRepository;
+import br.com.felipemariano.toDoSimple.services.exceptions.DataBindingViolationException;
+import br.com.felipemariano.toDoSimple.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +19,7 @@ public class UserService {
 
     public User findById(Long id) {
         Optional<User> user = this.userRepository.findById(id);
-        return user.orElseThrow(() -> new RuntimeException("Usuário não encontrado! Id: " + id + ". Tipo: " + User.class.getName()));
+        return user.orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado! Id: " + id + ". Tipo: " + User.class.getName()));
     }
 
     @Transactional
@@ -41,7 +43,7 @@ public class UserService {
         try {
             this.userRepository.deleteById(id);
         }catch (Exception e) {
-            throw new RuntimeException("Não foi possível excluir o usuário, pois existem entidades relacionadas a ele!");
+            throw new DataBindingViolationException("Não foi possível excluir o usuário, pois existem entidades relacionadas a ele!");
         }
     }
 }
