@@ -12,7 +12,7 @@ import java.net.URI;
 
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/user")
 @Validated
 public class UserController {
 
