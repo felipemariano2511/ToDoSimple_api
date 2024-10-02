@@ -41,7 +41,7 @@ public class SecurityConfig {
                 .anyRequest().authenticated().and()
                 .authenticationManager(authenticationManager);
 
-        SessionManagementConfigurer<HttpSecurity> httpSecuritySessionManagementConfigurer = http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         return http.build();
     }
